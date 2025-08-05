@@ -1,12 +1,18 @@
 import React from 'react';
 import Track from './Track';
 
-function Tracklist() {
+function Tracklist({ tracks =[] }) {
+    console.log('tracks:', tracks);
   return (
     <div className="Tracklist">
-      <Track />
-      <Track />
-      <Track />
+      {tracks.map(track => (
+        <Track 
+          key={track.id}
+          name={track.name}
+          artist={track.artist}
+          album={track.album}
+        />
+      ))}
     </div>
   );
 }
