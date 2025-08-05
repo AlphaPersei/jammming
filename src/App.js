@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
-//import './App.css';
+import './App.css';
 import React, {useState} from 'react';
-//import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
 
@@ -27,12 +27,36 @@ function App() {
     }
 
   ]);
+
+const [playlistName, setPlaylistName] = useState('My Playlist');
+
+  const [playlistTracks, setPlaylistTracks] = useState([
+    {
+      id: 4,
+      name: 'Don’t Start Now',
+      artist: 'Dua Lipa',
+      album: 'Future Nostalgia'
+    },
+    {
+      id: 5,
+      name: 'Save Your Tears',
+      artist: 'The Weeknd',
+      album: 'After Hours'
+    }
+  ]);
+
+
   return (
     <div className="App">
       <h1>Jammming</h1>
-      <div classNmae="App-content">
+      <SearchBar />
+      <div className="App-content">
         <SearchResults searchResults={searchResults} />
-        <Playlist/>
+        <Playlist
+
+        playlistName={playlistName}
+        playlistTracks={playlistTracks}
+        />
         </div>
       
       

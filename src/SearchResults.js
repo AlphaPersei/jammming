@@ -7,7 +7,7 @@ function SearchResults({ searchResults }) {
       <h2>Results</h2>
       <Tracklist tracks={searchResults} />
     </div>
-    );
+  );
 }
 
 export default SearchResults;
