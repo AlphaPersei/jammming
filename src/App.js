@@ -1,6 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
@@ -52,7 +52,10 @@ const [playlistName, setPlaylistName] = useState('My Playlist');
     }
     setPlaylistTracks(prev => [...prev, track]); // Add new track
   };
-
+  
+  const removeTrack=(track)=>{
+    setPlaylistTracks(prev => prev.filter(savedTrack => savedTrack.id !== track.id ));
+  };
 
   return (
     <div className="App">
@@ -64,6 +67,7 @@ const [playlistName, setPlaylistName] = useState('My Playlist');
 
         playlistName={playlistName}
         playlistTracks={playlistTracks}
+        onRemove={removeTrack}
         />
         </div>
       
