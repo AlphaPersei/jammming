@@ -1,6 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
@@ -44,6 +44,14 @@ const [playlistName, setPlaylistName] = useState('My Playlist');
       album: 'After Hours'
     }
   ]);
+  //add track handler
+  const addTrack = (track) => {
+    // check if track is already in playlist
+    if (playlistTracks.find(savedTrack => savedTrack.id === track.id)){
+      return;// dont add duplicates
+    }
+    setPlaylistTracks(prev => [...prev, track]); // Add new track
+  };
 
 
   return (
@@ -51,7 +59,7 @@ const [playlistName, setPlaylistName] = useState('My Playlist');
       <h1>Jammming</h1>
       <SearchBar />
       <div className="App-content">
-        <SearchResults searchResults={searchResults} />
+        <SearchResults searchResults={searchResults} onAdd={addTrack} />
         <Playlist
 
         playlistName={playlistName}

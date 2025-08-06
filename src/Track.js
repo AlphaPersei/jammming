@@ -1,14 +1,20 @@
 import React from 'react';
 
-function Track({ name, artist, album }) {
+function Track({ track, onAdd, isRemoval }) {
+    const handleAdd = () => {
+    onAdd(track);
+  };
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{name}</h3>
-        <p>{artist} | {album}</p>
+         <h3>{track.name}</h3>
+        <p>{track.artist} | {track.album}</p>
       </div>
-      <button className="Track-action">+</button>
+      {!isRemoval && (
+      <button className="Track-action" onClick={handleAdd}>+allover</button>
+      )}
     </div>
+  
   );
 }
 
